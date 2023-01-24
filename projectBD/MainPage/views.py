@@ -24,7 +24,7 @@ def search(request):
         cursor.execute('SELECT * FROM get_cars_by_filter(%s, %s, Null, Null, Null, Null, Null, Null, Null, Null, Null, Null, Null, Null, Null, Null, Null)', [search_term, search_term])
         search_results = cursor.fetchall()
     if request.headers.get("X-Requested-With") == "XMLHttpRequest":
-        # request is AJAX
+        # request is AJAXcd projektB
         return JsonResponse(list(search_results), safe=False)
     else:
         # request is not AJAX
