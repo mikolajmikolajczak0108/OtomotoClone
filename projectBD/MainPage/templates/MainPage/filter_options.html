@@ -7,25 +7,27 @@
         <div class="col-md-4">
             <select class="form-control" id="brand-select">
                 <option value="">Brand</option>
-                {% for brand in brands %}
-                <option value="{{brand}}">{{brand}}</option>
+{% for brand in brands %}
+                <option value="{{brand.0}}">{{brand.0}}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="col-md-4">
             <select class="form-control" id="model-select">
                 <option value="">Model</option>
-                {% for model in models %}
-                <option value="{{model}}">{{model}}</option>
+{% for model in models %}
+                <option value="{{model}}">{{model.0}}</option>
                 {% endfor %}
+
             </select>
         </div>
         <div class="col-md-4">
             <select class="form-control" id="generation-year-select">
                 <option value="">Generation Year</option>
-                {% for year in years %}
-                <option value="{{year}}">{{year}}</option>
+{% for year in years %}
+                <option value="{{year}}">{{year.0}}</option>
                 {% endfor %}
+
             </select>
         </div>
     </div>
@@ -33,22 +35,23 @@
         <div class="col-md-4">
             <select class="form-control" id="price-select">
                 <option value="">Price</option>
-                {% for price in prices %}
-                <option value="{{price}}">{{price}}</option>
+{% for price in prices %}
+                <option value="{{price}}">{{price.0}}</option>
                 {% endfor %}
+
             </select>
         </div>
 
     </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="generation-year-select">
         <option value="">Select Generation Year</option>
         {% for year in generation_years %}
-        <option value="{{year}}">{{year}}</option>
+        <option value="{{year}}">{{year.0}}</option>
         {% endfor %}
     </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="mileage-select">
         <option value="" disabled selected>Mileage</option>
         <option value="10000">0-10000</option>
@@ -64,78 +67,78 @@
         <option value="110000">100000+</option>
 </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_garaged-select">
         <option value="" disabled selected>Is Garaged</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_damaged-select">
         <option value="" disabled selected>Is Damaged</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_after_accident-select">
         <option value="" disabled selected>Is AfterAccident</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_electric_seats-select">
         <option value="" disabled selected>Is Electric Seats</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_cruise_control-select">
         <option value="" disabled selected>Is Cruise Control</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_usb_port-select">
         <option value="" disabled selected>Is USB Port</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_abs-select">
 <option value="">Select ABS</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
 </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_bluetooth-select">
         <option value="">Select Bluetooth</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
 </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="is_gps-select">
         <option value="">Select GPS</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
 </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="air_conditioning_type-select">
         <option value="">Select Air conditioning type</option>
     {% for offer in recent_offers %}
-        <option value="{{offer.air_conditioning_type}}">{{offer.air_conditioning_type}}</option>
+        <option value="{{air_conditioning_type}}">{{air_conditioning_type.0}}</option>
     {% endfor %}
 </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="roof_type_id-select">
         <option value="">Select Roof Type</option>
     {% for offer in recent_offers %}
@@ -143,7 +146,7 @@
     {% endfor %}
 </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <select class="form-control" id="upholstery_id-select">
         <option value="">Select Upholstery</option>
     {% for offer in recent_offers %}
@@ -155,7 +158,162 @@
     <button class="btn btn-primary" id="filter-btn">Filter</button>
 </div>
 </div>
-</div>
     {% endblock %}
 </body>
+
+<script>
+<script>
+    function getFilterOptions() {
+        $.ajax({
+            url: '/get_filter_options',
+            type: 'GET',
+            success: function(response) {
+                var brands = response.brands;
+                var models = response.models;
+                var years = response.years;
+                var prices = response.prices;
+                var mileages = response.mileages;
+                var is_garaged = response.is_garaged;
+                var is_damaged = response.is_damaged;
+                var is_after_accident = response.is_after_accident;
+                var is_electric_seats = response.is_electric_seats;
+                var is_cruise_control = response.is_cruise_control;
+                var is_usb_port = response.is_usb_port;
+                var is_abs = response.is_abs;
+                var is_bluetooth = response.is_bluetooth;
+                var is_gps = response.is_gps;
+                var air_conditioning_type = response.air_conditioning_type;
+                var roof_type_id = response.roof_type_id;
+                var upholstery_id = response.upholstery_id;
+
+                $('#brand-select').empty();
+                $('#brand-select').append('<option value="">Brand</option>');
+                for (var i=0; i<brands.length; i++) {
+                    $('#brand-select').append('<option value="' + brands[i].brand + '">' + brands[i].brand + '</option>');
+                }
+for (var i=0; i<models.length; i++) {
+$('#model-select').append('<option value="' + models[i].model + '">' + models[i].model + '</option>');
+}
+
+for (var i=0; i<years.length; i++) {
+$('#generation-year-select').append('<option value="' + years[i].generation_year + '">' + years[i].generation_year + '</option>');
+}
+
+for (var i=0; i<prices.length; i++) {
+$('#price-select').append('<option value="' + prices[i].price_netto + '">' + prices[i].price_netto + '</option>');
+}
+
+for (var i=0; i<mileages.length; i++) {
+$('#mileage-select').append('<option value="' + mileages[i].mileage + '">' + mileages[i].mileage + '</option>');
+}
+
+for (var i=0; i<garages.length; i++) {
+$('#is_garaged-select').append('<option value="' + garages[i].is_garaged + '">' + garages[i].is_garaged + '</option>');
+}
+for (var i=0; i<damages.length; i++) {
+$('#is_damaged-select').append('<option value="' + damages[i].is_damaged + '">' + damages[i].is_damaged + '</option>');
+}
+for (var i=0; i<accidents.length; i++) {
+$('#is_after_accident-select').append('<option value="' + accidents[i].is_after_accident + '">' + accidents[i].is_after_accident + '</option>');
+}
+for (var i=0; i<electric_seats.length; i++) {
+$('#is_electric_seats-select').append('<option value="' + electric_seats[i].is_electric_seats + '">' + electric_seats[i].is_electric_seats + '</option>');
+}
+for (var i=0; i<cruise_controls.length; i++) {
+$('#is_cruise_control-select').append('<option value="' + cruise_controls[i].is_cruise_control + '">' + cruise_controls[i].is_cruise_control + '</option>');
+}
+
+for (var i=0; i<usb_ports.length; i++) {
+$('#is_usb_port-select').append('<option value="' + usb_ports[i].is_usb_port + '">' + usb_ports[i].is_usb_port + '</option>');
+}
+
+for (var i=0; i<abs.length; i++) {
+$('#is_abs-select').append('<option value="' + abss[i].is_abs + '">' + abss[i].is_abs + '</option>');
+}
+
+for (var i=0; i<bluetooths.length; i++) {
+$('#is_bluetooth-select').append('<option value="' + bluetooths[i].is_bluetooth + '">' + bluetooths[i].is_bluetooth + '</option>');
+}
+
+for (var i=0; i<gpss.length; i++) {
+$('#is_gps-select').append('<option value="' + gpss[i].is_gps + '">' + gpss[i].is_gps + '</option>');
+}
+
+for (var i=0; i<air_conditioning_types.length; i++) {
+$('#air_conditioning_type-select').append('<option value="' + air_conditioning_types[i].air_conditioning_type + '">' + air_conditioning_types[i].air_conditioning_type + '</option>');
+}
+
+for (var i=0; i<roof_types.length; i++) {
+$('#roof_type-select').append('<option value="' + roof_types[i].roof_type_id + '">' + roof_types[i].roof_type + '</option>');
+}
+
+for (var i=0; i<upholsteries.length; i++) {
+$('#upholstery-select').append('<option value="' + upholsteries[i].upholstery_id + '">' + upholsteries[i].upholstery + '</option>');
+}
+
+$('#filter-button').click(function() {
+var brand = $('#brand-select').val();
+var model = $('#model-select').val();
+var generation_year = $('#generation-year-select').val();
+var price = $('#price-select').val();
+var mileage = $('#mileage-select').val();
+var is_garaged = $('#is_garaged-select').val();
+var is_damaged = $('#is_damaged-select').val();
+var is_after_accident = $('#is_after_accident-select').val();
+var is_electric_seats = $('#is_electric_seats-select').val();
+var is_cruise_control = $('#is_cruise_control-select').val();
+var is_usb_port = $('#is_usb_port-select').val();
+var is_abs = $('#is_abs-select').val();
+var is_bluetooth = $('#is_bluetooth-select').val();
+var is_gps = $('#is_gps-select').val();
+var air_conditioning_type = $('#air_conditioning_type-select').val();
+var roof_type_id = $('#roof_type_id-select').val();
+var upholstery_id = $('#upholstery_id-select').val();
+
+$.ajax({
+type: 'GET',
+url: '/filter/',
+data: {
+brand_name: brand_name,
+model_name: model_name,
+generation_year: generation_year,
+price_netto: price_netto,
+mileage: mileage,
+is_garaged: is_garaged,
+is_damaged: is_damaged,
+is_after_accident: is_after_accident,
+is_electric_seats: is_electric_seats,
+is_cruise_control: is_cruise_control,
+is_usb_port: is_usb_port,
+is_abs: is_abs,
+is_bluetooth: is_bluetooth,
+is_gps: is_gps,
+air_conditioning_type: air_conditioning_type,
+roof_type_id: roof_type_id,
+upholstery_id: upholstery_id
+},
+success: function (data) {
+$("#offers").empty();
+for (var i = 0; i < data.filtered_cars.length; i++) {
+$("#offers").append(
+'<div class="col-md-4">' +
+'<div class="card mb-4 box-shadow">' +
+'<img class="card-img-top" src="' + data.filtered_cars[i].photo + '" alt="Card image cap">' +
+'<div class="card-body">' +
+'<p class="card-text">' + data.filtered_cars[i].brand + ' ' + data.filtered_cars[i].model + '</p>' +
+'<div class="d-flex justify-content-between align-items-center">' +
+'<div class="btn-group">' +
+'<a type="button" href="/offer/' + data.filtered_cars[i].id + '" class="btn btn-sm btn-outline-secondary">View</a>' +
+'</div>' +
+'</div>' +
+'</div>' +
+'</div>' +
+'
+
+
+
+
+
+
+</script>
 </html>

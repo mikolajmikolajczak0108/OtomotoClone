@@ -88,4 +88,5 @@ def get_filter_options(request):
                    'is_cruise_control': is_cruise_control, 'is_usb_port': is_usb_port, 'is_abs': is_abs,
                    'is_bluetooth': is_bluetooth, 'is_gps': is_gps, 'air_conditioning_type': air_conditioning_type,
                    'roof_types': roof_types, 'upholsteries': upholsteries}
-        return render(request, 'MainPage/index.html', context)
+        breakpoint()
+        return render(request, 'MainPage/filter_options.html', context)
