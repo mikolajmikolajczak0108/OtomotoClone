@@ -48,234 +48,77 @@
         <div class="subtitle">
             <h2>Best place to buy your car</h2>
         </div>
-
     </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <select class="form-control" id="brand-select">
-                <option value="">Brand</option>
-                {% for brand in brands %}
-                <option value="{{brand}}">{{brand}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-md-4">
-            <select class="form-control" id="model-select">
-                <option value="">Model</option>
-                {% for model in models %}
-                <option value="{{model}}">{{model}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-md-4">
-            <select class="form-control" id="generation-year-select">
-                <option value="">Generation Year</option>
-                {% for year in years %}
-                <option value="{{year}}">{{year}}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <select class="form-control" id="price-select">
-                <option value="">Price</option>
-                {% for price in prices %}
-                <option value="{{price}}">{{price}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-md-4">
-            <select class="form-control" id="mileage-select">
-                <option value="">Mileage</option>
-                {% for mileage in mileages %}
-                <option value="{{mileage}}">{{mileage}}</option>
-                {% endfor %}
-            </select>
-        </div>
-<div class="col-md-4">
-            <button class="btn btn-primary" id="filter-btn">Filter</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <select class="form-control" id="brand-select">
-                <option value="">Brand</option>
-                {% for brand in brands %}
-                <option value="{{brand}}">{{brand}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-md-3">
-            <select class="form-control" id="model-select">
-                <option value="">Model</option>
-                {% for model in models %}
-                <option value="{{model}}">{{model}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-md-3">
-            <select class="form-control" id="year-select">
-                <option value="">Year</option>
-                {% for year in years %}
-                <option value="{{year}}">{{year}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-md-3">
-            <select class="form-control" id="price-select">
-                <option value="">Price</option>
-                {% for price in prices %}
-                <option value="{{price}}">{{price}}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
-    <div class="row">
-<div class="col-md-3">
-    <select class="form-control" id="brand-select">
-        <option value="">Select Brand</option>
-        {% for brand in brands %}
-        <option value="{{brand.name}}">{{brand.name}}</option>
-        {% endfor %}
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="model-select">
-        <option value="">Select Model</option>
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="generation-year-select">
-        <option value="">Select Generation Year</option>
-        {% for year in generation_years %}
-        <option value="{{year}}">{{year}}</option>
-        {% endfor %}
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="price-select">
-        <option value="">Select Price</option>
-        {% for price in prices %}
-        <option value="{{price}}">{{price}}</option>
-        {% endfor %}
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="mileage-select">
-        <option value="">Select Mileage</option>
-        {% for mileage in mileages %}
-        <option value="" disabled selected>Mileage</option>
-        <option value="10000">0-10000</option>
-        <option value="20000">10000-20000</option>
-        <option value="30000">20000-30000</option>
-        <option value="40000">30000-40000</option>
-        <option value="50000">40000-50000</option>
-        <option value="60000">50000-60000</option>
-        <option value="70000">60000-70000</option>
-        <option value="80000">70000-80000</option>
-        <option value="90000">80000-90000</option>
-        <option value="100000">90000-100000</option>
-        <option value="110000">100000+</option>
-        {% endfor %}
-</select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_garaged-select">
-        <option value="" disabled selected>Is Garaged</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_damaged-select">
-        <option value="" disabled selected>Is Damaged</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_after_accident-select">
-        <option value="" disabled selected>Is AfterAccident</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_electric_seats-select">
-        <option value="" disabled selected>Is Electric Seats</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_cruise_control-select">
-        <option value="" disabled selected>Is Cruise Control</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_usb_port-select">
-        <option value="" disabled selected>Is USB Port</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_abs-select">
-<option value="">Select ABS</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-</select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_bluetooth-select">
-        <option value="">Select Bluetooth</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-</select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="is_gps-select">
-        <option value="">Select GPS</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-</select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="air_conditioning_type-select">
-        <option value="">Select Air conditioning type</option>
-    {% for offer in recent_offers %}
-        <option value="{{offer.air_conditioning_type}}">{{offer.air_conditioning_type}}</option>
-    {% endfor %}
-</select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="roof_type_id-select">
-        <option value="">Select Roof Type</option>
-    {% for offer in recent_offers %}
-        <option value="{{offer.roof_type_id}}">{{offer.roof_type_id}}</option>
-    {% endfor %}
-</select>
-</div>
-<div class="col-md-3">
-    <select class="form-control" id="upholstery_id-select">
-        <option value="">Select Upholstery</option>
-    {% for offer in recent_offers %}
-        <option value="{{offer.upholstery_id}}">{{offer.upholstery_id}}</option>
-    {% endfor %}
-</select>
-</div>
-<div class="col-md-4">
-    <button class="btn btn-primary" id="filter-btn">Filter</button>
-</div>
-</div>
-</div>
-<div class
     {% block content %}
     {% endblock %}
 </body>
+<script>
+    var filterBtn = document.getElementById("filter-btn");
+    filterBtn.addEventListener("click", function() {
+        var brand = document.getElementById("brand-select").value;
+        var model = document.getElementById("model-select").value;
+        var generation_year = document.getElementById("generation_year-select").value;
+        var price_netto = document.getElementById("price_netto-select").value;
+        var mileage = document.getElementById("mileage-select").value;
+        var is_garaged = document.getElementById("is_garaged-select").value
+        var is_damaged = document.getElementById("is_damaged-select").value;
+        var is_after_accident = document.getElementById("is_after_accident-select").value;
+        var is_electric_seats = document.getElementById("is_electric_seats-select").value;
+        var is_cruise_control = document.getElementById("is_cruise_control-select").value;
+        var is_usb_port = document.getElementById("is_usb_port-select").value;
+        var is_abs = document.getElementById("is_abs-select").value;
+        var is_bluetooth = document.getElementById("is_bluetooth-select").value;
+        var is_gps = document.getElementById("is_gps-select").value;
+        var air_conditioning_type = document.getElementById("air_conditioning_type-select").value;
+        var roof_type_id = document.getElementById("roof_type_id-select").value;
+        var upholstery_id = document.getElementById("upholstery_id-select").value;
+        // Send a GET request to the server with the selected filters
+        fetch('/get_cars_by_filter?brand_name=' + brand_name + '&model_name=' + model_name + '&generation_year=' + generation_year + '&price_netto=' + price_netto + '&mileage=' + mileage + '&is_garaged=' + is_garaged + '&is_damaged=' + is_damaged + '&is_after_accident=' + is_after_accident + '&is_electric_seats=' + is_electric_seats + '&is_cruise_control=' + is_cruise_control + '&is_usb_port=' + is_usb_port + '&is_abs=' + is_abs + '&is_bluetooth=' + is_bluetooth + '&is_gps=' + is_gps + '&air_conditioning_type=' + air_conditioning_type + '&roof_type_id=' + roof_type_id + '&upholstery_id=' + upholstery_id)
+        .then(function(response) {
+        return response.json();
+        })
+        .then(function(cars) {
+        // Use cars to update the page
+        var carsRow = document.querySelector(".row");
+        carsRow.innerHTML = "";
+        cars.forEach(function(car) {
+        var newCar = document.createElement('div');
+        newCar.className = "col-xl-3 col-lg-6 col-md-6 col-sm-12";
+                var card = document.createElement('div');
+        card.className = "card";
 
+        var img = document.createElement('img');
+        img.src = car.path;
+        img.className = "card-img-top img-fluid";
+        img.alt = "car image";
+        card.appendChild(img);
+
+        var cardBody = document.createElement('div');
+        cardBody.className = "card-body";
+
+        var title = document.createElement('h5');
+        title.title.className = "card-title";
+        title.innerHTML = offer.2 + " " + offer.1 + " " + offer.3;
+        cardBody.appendChild(title);
+        var text = document.createElement('p');
+        text.className = "card-text";
+        text.innerHTML = offer.4;
+        cardBody.appendChild(text);
+
+        card.appendChild(cardBody);
+        newOffer.appendChild(card);
+
+        var offersRow = document.querySelector(".row");
+        offersRow.appendChild(newOffer);
+});
+
+currentOffset += limit;
+})
+.catch(function(error) {
+console.log(error);
+});
+});
+
+
+</script>
 </html>

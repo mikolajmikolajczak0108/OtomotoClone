@@ -1,0 +1,161 @@
+
+
+{% block content %}
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <select class="form-control" id="brand-select">
+                <option value="">Brand</option>
+                {% for brand in brands %}
+                <option value="{{brand}}">{{brand}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select class="form-control" id="model-select">
+                <option value="">Model</option>
+                {% for model in models %}
+                <option value="{{model}}">{{model}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select class="form-control" id="generation-year-select">
+                <option value="">Generation Year</option>
+                {% for year in years %}
+                <option value="{{year}}">{{year}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <select class="form-control" id="price-select">
+                <option value="">Price</option>
+                {% for price in prices %}
+                <option value="{{price}}">{{price}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+    </div>
+<div class="col-md-3">
+    <select class="form-control" id="generation-year-select">
+        <option value="">Select Generation Year</option>
+        {% for year in generation_years %}
+        <option value="{{year}}">{{year}}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="mileage-select">
+        <option value="" disabled selected>Mileage</option>
+        <option value="10000">0-10000</option>
+        <option value="20000">10000-20000</option>
+        <option value="30000">20000-30000</option>
+        <option value="40000">30000-40000</option>
+        <option value="50000">40000-50000</option>
+        <option value="60000">50000-60000</option>
+        <option value="70000">60000-70000</option>
+        <option value="80000">70000-80000</option>
+        <option value="90000">80000-90000</option>
+        <option value="100000">90000-100000</option>
+        <option value="110000">100000+</option>
+</select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_garaged-select">
+        <option value="" disabled selected>Is Garaged</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_damaged-select">
+        <option value="" disabled selected>Is Damaged</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_after_accident-select">
+        <option value="" disabled selected>Is AfterAccident</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_electric_seats-select">
+        <option value="" disabled selected>Is Electric Seats</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_cruise_control-select">
+        <option value="" disabled selected>Is Cruise Control</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_usb_port-select">
+        <option value="" disabled selected>Is USB Port</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_abs-select">
+<option value="">Select ABS</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+</select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_bluetooth-select">
+        <option value="">Select Bluetooth</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+</select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="is_gps-select">
+        <option value="">Select GPS</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+</select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="air_conditioning_type-select">
+        <option value="">Select Air conditioning type</option>
+    {% for offer in recent_offers %}
+        <option value="{{offer.air_conditioning_type}}">{{offer.air_conditioning_type}}</option>
+    {% endfor %}
+</select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="roof_type_id-select">
+        <option value="">Select Roof Type</option>
+    {% for offer in recent_offers %}
+        <option value="{{offer.roof_type_id}}">{{offer.roof_type_id}}</option>
+    {% endfor %}
+</select>
+</div>
+<div class="col-md-3">
+    <select class="form-control" id="upholstery_id-select">
+        <option value="">Select Upholstery</option>
+    {% for offer in recent_offers %}
+        <option value="{{offer.upholstery_id}}">{{offer.upholstery_id}}</option>
+    {% endfor %}
+</select>
+</div>
+<div class="col-md-4">
+    <button class="btn btn-primary" id="filter-btn">Filter</button>
+</div>
+</div>
+</div>
+    {% endblock %}
+</body>
+</html>
