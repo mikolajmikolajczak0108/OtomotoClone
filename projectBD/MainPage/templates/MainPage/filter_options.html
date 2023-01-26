@@ -161,6 +161,7 @@
     {% endblock %}
 </body>
 
+
 <script>
 <script>
     function getFilterOptions() {
@@ -188,130 +189,44 @@
 
                 $('#brand-select').empty();
                 $('#brand-select').append('<option value="">Brand</option>');
-                for (var i=0; i<brands.length; i++) {
-                    $('#brand-select').append('<option value="' + brands[i].brand + '">' + brands[i].brand + '</option>');
-                }
-for (var i=0; i<models.length; i++) {
-$('#model-select').append('<option value="' + models[i].model + '">' + models[i].model + '</option>');
-}
+$(document).ready(function() {
+    var brands = ["Brand 1", "Brand 2", "Brand 3"];
+    var prices = ["$0-$50", "$50-$100", "$100-$150", "$150-$200"];
 
-for (var i=0; i<years.length; i++) {
-$('#generation-year-select').append('<option value="' + years[i].generation_year + '">' + years[i].generation_year + '</option>');
-}
+    //populate brand select field
+    for (var i=0; i<brands.length; i++) {
+        $('#brand-select').append($('<option>', {
+            value: brands[i],
+            text: brands[i]
+        }));
+    }
 
-for (var i=0; i<prices.length; i++) {
-$('#price-select').append('<option value="' + prices[i].price_netto + '">' + prices[i].price_netto + '</option>');
-}
+    //populate price select field
+    for (var i=0; i<prices.length; i++) {
+        $('#price-select').append($('<option>', {
+            value: prices[i],
+            text: prices[i]
+        }));
+    }
 
-for (var i=0; i<mileages.length; i++) {
-$('#mileage-select').append('<option value="' + mileages[i].mileage + '">' + mileages[i].mileage + '</option>');
-}
+    //filter offers on button click
+    $("#filter-button").click(function() {
+        var selectedBrand = $("#brand-select").val();
+        var selectedPrice = $("#price-select").val();
 
-for (var i=0; i<garages.length; i++) {
-$('#is_garaged-select').append('<option value="' + garages[i].is_garaged + '">' + garages[i].is_garaged + '</option>');
-}
-for (var i=0; i<damages.length; i++) {
-$('#is_damaged-select').append('<option value="' + damages[i].is_damaged + '">' + damages[i].is_damaged + '</option>');
-}
-for (var i=0; i<accidents.length; i++) {
-$('#is_after_accident-select').append('<option value="' + accidents[i].is_after_accident + '">' + accidents[i].is_after_accident + '</option>');
-}
-for (var i=0; i<electric_seats.length; i++) {
-$('#is_electric_seats-select').append('<option value="' + electric_seats[i].is_electric_seats + '">' + electric_seats[i].is_electric_seats + '</option>');
-}
-for (var i=0; i<cruise_controls.length; i++) {
-$('#is_cruise_control-select').append('<option value="' + cruise_controls[i].is_cruise_control + '">' + cruise_controls[i].is_cruise_control + '</option>');
-}
+        //loop through offers to filter
+        $(".offer").each(function() {
+            var offerBrand = $(this).data("brand");
+            var offerPrice = $(this).data("price");
 
-for (var i=0; i<usb_ports.length; i++) {
-$('#is_usb_port-select').append('<option value="' + usb_ports[i].is_usb_port + '">' + usb_ports[i].is_usb_port + '</option>');
-}
-
-for (var i=0; i<abs.length; i++) {
-$('#is_abs-select').append('<option value="' + abss[i].is_abs + '">' + abss[i].is_abs + '</option>');
-}
-
-for (var i=0; i<bluetooths.length; i++) {
-$('#is_bluetooth-select').append('<option value="' + bluetooths[i].is_bluetooth + '">' + bluetooths[i].is_bluetooth + '</option>');
-}
-
-for (var i=0; i<gpss.length; i++) {
-$('#is_gps-select').append('<option value="' + gpss[i].is_gps + '">' + gpss[i].is_gps + '</option>');
-}
-
-for (var i=0; i<air_conditioning_types.length; i++) {
-$('#air_conditioning_type-select').append('<option value="' + air_conditioning_types[i].air_conditioning_type + '">' + air_conditioning_types[i].air_conditioning_type + '</option>');
-}
-
-for (var i=0; i<roof_types.length; i++) {
-$('#roof_type-select').append('<option value="' + roof_types[i].roof_type_id + '">' + roof_types[i].roof_type + '</option>');
-}
-
-for (var i=0; i<upholsteries.length; i++) {
-$('#upholstery-select').append('<option value="' + upholsteries[i].upholstery_id + '">' + upholsteries[i].upholstery + '</option>');
-}
-
-$('#filter-button').click(function() {
-var brand = $('#brand-select').val();
-var model = $('#model-select').val();
-var generation_year = $('#generation-year-select').val();
-var price = $('#price-select').val();
-var mileage = $('#mileage-select').val();
-var is_garaged = $('#is_garaged-select').val();
-var is_damaged = $('#is_damaged-select').val();
-var is_after_accident = $('#is_after_accident-select').val();
-var is_electric_seats = $('#is_electric_seats-select').val();
-var is_cruise_control = $('#is_cruise_control-select').val();
-var is_usb_port = $('#is_usb_port-select').val();
-var is_abs = $('#is_abs-select').val();
-var is_bluetooth = $('#is_bluetooth-select').val();
-var is_gps = $('#is_gps-select').val();
-var air_conditioning_type = $('#air_conditioning_type-select').val();
-var roof_type_id = $('#roof_type_id-select').val();
-var upholstery_id = $('#upholstery_id-select').val();
-
-$.ajax({
-type: 'GET',
-url: '/filter/',
-data: {
-brand_name: brand_name,
-model_name: model_name,
-generation_year: generation_year,
-price_netto: price_netto,
-mileage: mileage,
-is_garaged: is_garaged,
-is_damaged: is_damaged,
-is_after_accident: is_after_accident,
-is_electric_seats: is_electric_seats,
-is_cruise_control: is_cruise_control,
-is_usb_port: is_usb_port,
-is_abs: is_abs,
-is_bluetooth: is_bluetooth,
-is_gps: is_gps,
-air_conditioning_type: air_conditioning_type,
-roof_type_id: roof_type_id,
-upholstery_id: upholstery_id
-},
-success: function (data) {
-$("#offers").empty();
-for (var i = 0; i < data.filtered_cars.length; i++) {
-$("#offers").append(
-'<div class="col-md-4">' +
-'<div class="card mb-4 box-shadow">' +
-'<img class="card-img-top" src="' + data.filtered_cars[i].photo + '" alt="Card image cap">' +
-'<div class="card-body">' +
-'<p class="card-text">' + data.filtered_cars[i].brand + ' ' + data.filtered_cars[i].model + '</p>' +
-'<div class="d-flex justify-content-between align-items-center">' +
-'<div class="btn-group">' +
-'<a type="button" href="/offer/' + data.filtered_cars[i].id + '" class="btn btn-sm btn-outline-secondary">View</a>' +
-'</div>' +
-'</div>' +
-'</div>' +
-'</div>' +
-'
-
-
-
+            if ((selectedBrand == "All" || selectedBrand == offerBrand) && (selectedPrice == "All" || selectedPrice == offerPrice)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
 
 
 
