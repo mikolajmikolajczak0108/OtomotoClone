@@ -1,10 +1,12 @@
 {% extends 'MainPage/base.html' %}
 {% load static %}
+
 {% block content %}
+{% include 'MainPage/filter_options.html' %}
 <script src="{% static 'js/mainpage.js' %}"></script>
 
 <h1>Recent Offers</h1>
-<div class="row">
+<div class="row recent_offers">
     {% for offer in recent_offers|slice:":20" %}
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
         <div class="card">

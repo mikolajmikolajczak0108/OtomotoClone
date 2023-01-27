@@ -1,4 +1,11 @@
-window.onload = function() {
+$(document).ready(function() {
+
+    loadMore();
+
+});
+
+
+function loadMore() {
     var currentOffset = 20;
     var limit = 20;
     var loadMoreBtn = document.getElementById("load-more-offers-btn");
@@ -43,7 +50,7 @@ window.onload = function() {
                 card.appendChild(cardBody);
                 newOffer.appendChild(card);
 
-                var offersRow = document.querySelector(".row");
+                var offersRow = document.querySelector(".recent_offers");
                 offersRow.appendChild(newOffer);
             });
 
@@ -54,4 +61,5 @@ window.onload = function() {
         });
 
         });
+
 }

@@ -1,7 +1,7 @@
 
-
+{% load static %}
 {% block content %}
-<body>
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -30,7 +30,6 @@
 
             </select>
         </div>
-    </div>
     <div class="row">
         <div class="col-md-4">
             <select class="form-control" id="price-select">
@@ -43,14 +42,6 @@
         </div>
 
     </div>
-<div class="col-md-4">
-    <select class="form-control" id="generation-year-select">
-        <option value="">Select Generation Year</option>
-        {% for year in generation_years %}
-        <option value="{{year}}">{{year.0}}</option>
-        {% endfor %}
-    </select>
-</div>
 <div class="col-md-4">
     <select class="form-control" id="mileage-select">
         <option value="" disabled selected>Mileage</option>
@@ -158,72 +149,7 @@
     <button class="btn btn-primary" id="filter-btn">Filter</button>
 </div>
 </div>
-</body>
 
 
-<script>
-    function getFilterOptions() {
-        $.ajax({
-            url: '/get_filter_options',
-            type: 'GET',
-            success: function(response) {
-                var brands = response.brands;
-                var models = response.models;
-                var years = response.years;
-                var prices = response.prices;
-                var mileages = response.mileages;
-                var is_garaged = response.is_garaged;
-                var is_damaged = response.is_damaged;
-                var is_after_accident = response.is_after_accident;
-                var is_electric_seats = response.is_electric_seats;
-                var is_cruise_control = response.is_cruise_control;
-                var is_usb_port = response.is_usb_port;
-                var is_abs = response.is_abs;
-                var is_bluetooth = response.is_bluetooth;
-                var is_gps = response.is_gps;
-                var air_conditioning_type = response.air_conditioning_type;
-                var roof_type_id = response.roof_type_id;
-                var upholstery_id = response.upholstery_id;
 
-                $('#brand-select').empty();
-                $('#brand-select').append('<option value="">Brand</option>');
-$(document).ready(function() {
-    var brands = ["Brand 1", "Brand 2", "Brand 3"];
-    var prices = ["$0-$50", "$50-$100", "$100-$150", "$150-$200"];
-
-    //populate brand select field
-    for (var i=0; i<brands.length; i++) {
-        $('#brand-select').append($('<option>', {
-            value: brands[i],
-            text: brands[i]
-        }));
-    }
-
-    //populate price select field
-    for (var i=0; i<prices.length; i++) {
-        $('#price-select').append($('<option>', {
-            value: prices[i],
-            text: prices[i]
-        }));
-    }
-
-    //filter offers on button click
-    $("#filter-button").click(function() {
-        var selectedBrand = $("#brand-select").val();
-        var selectedPrice = $("#price-select").val();
-
-        //loop through offers to filter
-        $(".offer").each(function() {
-            var offerBrand = $(this).data("brand");
-            var offerPrice = $(this).data("price");
-
-            if ((selectedBrand == "All" || selectedBrand == offerBrand) && (selectedPrice == "All" || selectedPrice == offerPrice)) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
-    });
-});
-</script>
-</html>
+{% endblock %}
