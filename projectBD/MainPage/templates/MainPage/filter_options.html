@@ -21,15 +21,14 @@
 
             </select>
         </div>
-        <div class="col-md-4">
-            <select class="form-control" id="generation-year-select">
-                <option value="">Generation Year</option>
-{% for year in years %}
-                <option value="{{year}}">{{year.0}}</option>
-                {% endfor %}
-
-            </select>
-        </div>
+<div class="col-md-4">
+    <select class="form-control" id="production-year-select">
+        <option value="">Production Year</option>
+        {% for year in production_years %}
+            <option value="{{year}}">{{year}}</option>
+        {% endfor %}
+    </select>
+</div>
     <div class="row">
         <div class="col-md-4">
             <select class="form-control" id="price-select">
@@ -59,68 +58,60 @@
 </select>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_garaged-select">
-        <option value="" disabled selected>Is Garaged</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
+  <div class="form-group">
+    <label for="is_garaged-checkbox">Is Garaged</label>
+    <input type="checkbox" class="form-control" id="is_garaged-checkbox">
+  </div>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_damaged-select">
-        <option value="" disabled selected>Is Damaged</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
+  <div class="form-group">
+    <label for="is_damaged-checkbox">Is Damaged</label>
+    <input type="checkbox" class="form-control" id="is_damaged-checkbox">
+  </div>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_after_accident-select">
-        <option value="" disabled selected>Is AfterAccident</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
+  <div class="form-group">
+    <label for="is_after_accident-checkbox">Is AfterAccident</label>
+    <input type="checkbox" class="form-control" id="is_after_accident-checkbox">
+  </div>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_electric_seats-select">
-        <option value="" disabled selected>Is Electric Seats</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
+  <div class="form-group">
+    <label for="is_electric_seats-checkbox">Is Electric Seats</label>
+    <input type="checkbox" class="form-control" id="is_electric_seats-checkbox">
+  </div>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_cruise_control-select">
-        <option value="" disabled selected>Is Cruise Control</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
+  <div class="form-group">
+    <label for="is_cruise_control-checkbox">Is Cruise Control</label>
+    <input type="checkbox" class="form-control" id="is_cruise_control-checkbox">
+  </div>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_usb_port-select">
-        <option value="" disabled selected>Is USB Port</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
+  <div class="form-group">
+    <label for="is_usb_port-checkbox">Is USB Port</label>
+    <input type="checkbox" class="form-control" id="is_usb_port-checkbox">
+  </div>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_abs-select">
-<option value="">Select ABS</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-</select>
+  <div class="form-group">
+    <label for="is_abs-checkbox">Select ABS</label>
+    <input type="checkbox" class="form-control" id="is_abs-checkbox">
+  </div>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_bluetooth-select">
-        <option value="">Select Bluetooth</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-</select>
+  <div class="form-group">
+    <label for="is_bluetooth-checkbox">Select Bluetooth</label>
+    <input type="checkbox" class="form-control" id="is_bluetooth-checkbox">
+  </div>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="is_gps-select">
-        <option value="">Select GPS</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-</select>
+  <div class="form-group">
+    <label for="is_gps-checkbox">Select GPS</label>
+    <input type="checkbox" class="form-control" id="is_gps-checkbox">
+  </div>
 </div>
+
 <div class="col-md-4">
     <select class="form-control" id="air_conditioning_type-select">
         <option value="">Select Air conditioning type</option>
@@ -149,7 +140,7 @@
     <button class="btn btn-primary" id="filter-btn">Filter</button>
 </div>
 </div>
-
+<script src="{% static 'js/filter_logic.js' %}"></script>
 
 
 {% endblock %}

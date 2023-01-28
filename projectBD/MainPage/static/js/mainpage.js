@@ -21,7 +21,7 @@ function loadMore() {
         })
         .then(function(offers) {
             // Use offers to update the page
-            offers.forEach(function(offer) {
+            offers['recent_offers'].forEach(function(offer) {
                 var newOffer = document.createElement('div');
                 newOffer.className = "col-xl-3 col-lg-6 col-md-6 col-sm-12";
 
@@ -53,7 +53,6 @@ function loadMore() {
                 var offersRow = document.querySelector(".recent_offers");
                 offersRow.appendChild(newOffer);
             });
-
             currentOffset += limit;
         })
         .catch(function(error) {
