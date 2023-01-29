@@ -136,3 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'index'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_URL = 'login'
+
+
+
+AUTH_USER_MODEL = 'users.MyUser'
