@@ -1,5 +1,20 @@
 {% extends "MainPage/base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-		<h1>{{ users.username }}</h1>
+<div class="content-section">
+    <h1>Profil Użytkownika {{ user.nick }}</h2>
+
+    <div class="media-body">
+        <p class="text-secondary">Nick: {{ user.nick }}</p>
+        <p class="text-secondary">Imię: {{ user.f_name }}</p>
+        <p class="text-secondary">Nazwisko: {{ user.l_name }}</p>
+        <p class="text-secondary">Email: {{ user.email }}</p>
+        <p class="text-secondary">Numer Tel.: {{ user.phone_number }}</p>
+
+    </div>
+
+
+</div>
 {% endblock content %}
+
+}
