@@ -4,6 +4,58 @@ $(document).ready(function() {
 
 });
 
+$(document).ready(function() {
+    var filter = document.getElementById("filter-btn");
+    console.log(filter)
+   console.log("Filter button clicked");
+  filter.addEventListener("click", function() {
+    var brand = $("#brand-select").val();
+    var model = $("#model-select").val();
+    var production_year = $("#production-year-select").val();
+    var price = $("#price-select").val();
+    var mileage = $("#mileage-select").val();
+    var is_garaged = $("#is_garaged-checkbox").is(":checked");
+    var is_damaged = $("#is_damaged-checkbox").is(":checked");
+    var is_after_accident = $("#is_after_accident-checkbox").is(":checked");
+    var is_electric_seats = $("#is_electric_seats-checkbox").is(":checked");
+    var is_cruise_control = $("#is_cruise_control-checkbox").is(":checked");
+    var is_usb_port = $("#is_usb_port-checkbox").is(":checked");
+    var is_abs = $("#is_abs-checkbox").is(":checked");
+    console.log("hujostatni")
+$.ajax({
+  type: "GET",
+  url: "/filter",
+  data: {
+    brand: brand,
+    model: model,
+    production_year: production_year,
+    price: price,
+    mileage: mileage,
+    is_garaged: is_garaged,
+    is_damaged: is_damaged,
+    is_after_accident: is_after_accident,
+    is_electric_seats: is_electric_seats,
+    is_cruise_control: is_cruise_control,
+    is_usb_port: is_usb_port,
+    is_abs: is_abs
+  },
+  success: function(response) {
+
+    $('#filtered-offers').html(response);
+         window.location.href = "/filtered_offers?offers=" + encodeURIComponent(JSON.stringify(response));
+         console.log("AJAX success");
+console.log("Response: " + response);
+    console.log("Huj zmieniaj strone")
+  },
+  error: function(error) {
+    console.log(error)
+        console.log("huj blad")
+  },
+
+});
+  });
+});
+
 
 function loadMore() {
     var currentOffset = 20;

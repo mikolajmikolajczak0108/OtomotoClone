@@ -113,26 +113,26 @@
 </div>
 
 <div class="col-md-4">
-    <select class="form-control" id="air_conditioning_type-select">
+    <select class="form-control" id="air_conditioning-select">
         <option value="">Select Air conditioning type</option>
-    {% for offer in recent_offers %}
-        <option value="{{air_conditioning_type}}">{{air_conditioning_type.0}}</option>
+    {% for air in air_conditioning_types %}
+        <option value="{{air.0}}">{{air.0}}</option>
     {% endfor %}
 </select>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="roof_type_id-select">
+    <select class="form-control" id="roof_type-select">
         <option value="">Select Roof Type</option>
-    {% for offer in recent_offers %}
-        <option value="{{offer.roof_type_id}}">{{offer.roof_type_id}}</option>
+    {% for roof in roof_types %}
+        <option value="{{roof.0}}">{{roof.0}}</option>
     {% endfor %}
 </select>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="upholstery_id-select">
+    <select class="form-control" id="upholstery-select">
         <option value="">Select Upholstery</option>
-    {% for offer in recent_offers %}
-        <option value="{{offer.upholstery_id}}">{{offer.upholstery_id}}</option>
+    {% for upholstery in upholsteries %}
+        <option value="{{upholstery.0}}">{{upholstery.0}}</option>
     {% endfor %}
 </select>
 </div>

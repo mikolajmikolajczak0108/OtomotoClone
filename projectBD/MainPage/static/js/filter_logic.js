@@ -1,4 +1,5 @@
 var select = $('#brand-select');
+
 select.on('change', function() {
     var selectedValue = $(this).val();
     $.ajax({
@@ -6,6 +7,7 @@ select.on('change', function() {
         url: '/',
         data: {brand: selectedValue},
         success: function(data) {
+        console.log("dzialam")
             var modelSelect = $('#model-select');
             modelSelect.empty();
             $.each(data.models, function(index, model) {
