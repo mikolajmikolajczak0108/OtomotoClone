@@ -76,7 +76,6 @@ def filter_cars(request):
         min_mileage = str(int(max_mileage) - 10000)
     else:
         min_mileage = ''
-    breakpoint()
     is_garaged = request.GET.get('is_garaged', '')
     is_damaged = request.GET.get('is_damaged', '')
     is_after_accident = request.GET.get('is_after_accident', '')
