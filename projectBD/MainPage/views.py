@@ -155,3 +155,9 @@ def filter_cars(request):
 def filter_offers(request):
 
         return render(request, 'MainPage/filtered_offers.html')
+
+
+
+
+def about(request):
+    return render(request, 'MainPage/about.html', {'title':'About'})

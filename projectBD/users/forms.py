@@ -2,6 +2,7 @@ from django import forms
 # from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import MyUser
+from .models import Profile
 
 class UserRegistrationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -19,3 +20,12 @@ class UserRegistrationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+    class Meta:
+        model = MyUser
+        fields = ['nick', 'email', 'f_name', 'l_name', 'phone_number']
+
+

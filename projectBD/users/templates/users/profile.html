@@ -1,20 +1,43 @@
 {% extends "MainPage/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<style>
+     .content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 5px;
+   display: flex;
+  justify-content: center;
+
+  height: 150vh;
+</style>
+
 <div class="content-section">
-    <h1>Profil Użytkownika {{ user.nick }}</h2>
-
-    <div class="media-body">
-        <p class="text-secondary">Nick: {{ user.nick }}</p>
-        <p class="text-secondary">Imię: {{ user.f_name }}</p>
-        <p class="text-secondary">Nazwisko: {{ user.l_name }}</p>
-        <p class="text-secondary">Email: {{ user.email }}</p>
-        <p class="text-secondary">Numer Tel.: {{ user.phone_number }}</p>
-
+    <div class="content-section">
+        <div class="media-body">
+            <h2 class="account-heading">Profil użytkownika {{ user.nick }}</h2>
+            <p class="text-secondary">{{ user.f_name }} {{ user.l_name }}</p>
+            <p class="text-secondary">{{ user.email }}</p>
+            <p class="text-secondary">{{ user.phone_number }}</p>
+        </div>
     </div>
 
 
+    <!--FORM-->
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Zaktualizuj Informacje o Profilu</legend>
+                {{ u_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Zaktualizuj Profil</button>
+            </div>
+        </form>
+    </div>
 </div>
-{% endblock content %}
 
-}
+{% endblock content %}

@@ -84,3 +84,9 @@ class MyUser(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         return self.is_superuser
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(MyUser, on_delete=models.CASCADE)
+    def __str__(self):
+       return f'{self.user.nick} Profile'
