@@ -89,7 +89,7 @@ function loadMore() {
                 card.className = "card";
 
                 var img = document.createElement('img');
-                img.src = offer.image1; // offer[6] when images ready
+                img.src = '/static/images/image.jpeg'; // offer[6] when images ready
                 img.className = "card-img-top img-fluid";
                 img.alt = "offer image";
                 card.appendChild(img);

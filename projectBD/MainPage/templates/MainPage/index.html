@@ -10,7 +10,7 @@
     {% for offer in recent_offers|slice:":20" %}
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
         <div class="card">
-            <img src="{{ offer.image1 }}" class="card-img-top img-fluid" alt="offer image">
+            <img src="{% static 'images/image.jpeg' %}" class="card-img-top img-fluid" alt="offer image">
             <div class="card-body">
                 <h5 class="card-title">{{offer.2}} {{offer.1}} {{offer.3}}</h5>
                 <p class="card-text">{{offer.4}}</p>
