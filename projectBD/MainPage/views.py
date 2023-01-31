@@ -65,6 +65,10 @@ def filter_cars(request):
     model = request.GET.get('model', '')
     production_year = request.GET.get('production_year', '')
     price = request.GET.get('price', '')
+    if production_year:
+        production_year2 = datetime.strptime(production_year, '%Y')
+    else:
+        production_year2 = ""
     mileage = request.GET.get('mileage', '')
     is_garaged = request.GET.get('is_garaged', '')
     is_damaged = request.GET.get('is_damaged', '')
@@ -102,11 +106,15 @@ def filter_cars(request):
     query += f"model_name2 => '{model}' " if model else ""
     if query[-2:-1] == "'":
         query += f","
-    query += f"generation_year2 => '{production_year}' " if production_year else ""
+    query += f"generation_year2 => '{production_year2}' " if production_year2 else ""
     if query[-2:-1] == "'":
         query += f","
-    # query += f"'{price}', " if price else ""
+    query += f"'{price}', " if price else ""
+    if query[-2:-1] == "'":
+        query += f","
     # query += f"'{mileage}', " if mileage else ""
+    # if query[-2:-1] == "'":
+    #     query += f","
     query += f"is_garaged2 => '{is_garaged}' " if is_garaged == "True" else ""
     if query[-2:-1] == "'":
         query += f","
