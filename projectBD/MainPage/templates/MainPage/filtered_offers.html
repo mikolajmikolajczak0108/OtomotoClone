@@ -101,6 +101,10 @@
         pTag.setAttribute('class', 'card-text');
         pTag.innerHTML = offer['3'];
         cardBodyDiv.appendChild(pTag);
+        let pTag2 = document.createElement('p');
+        pTag2.setAttribute('class', 'card-text');
+        pTag2.innerHTML = "<b>Mileage: </b>" + offer['4'];
+        cardBodyDiv.appendChild(pTag2);
         recentOffersDiv.appendChild(newDiv);
     }
 </script>

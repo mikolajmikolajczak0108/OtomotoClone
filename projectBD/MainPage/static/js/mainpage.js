@@ -13,7 +13,7 @@ $(document).ready(function() {
     var model = $("#model-select").val();
     var production_year = $("#production-year-select").val();
     var price = $("#price-select").val();
-    var mileage = $("#mileage-select").val();
+    var mileage = $("#mileage-select").val()
     var is_garaged = $("#is_garaged-checkbox").is(":checked");
     var is_damaged = $("#is_damaged-checkbox").is(":checked");
     var is_after_accident = $("#is_after_accident-checkbox").is(":checked");
