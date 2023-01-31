@@ -64,7 +64,8 @@ def filter_cars(request):
     brand = request.GET.get('brand', '')
     model = request.GET.get('model', '')
     production_year = request.GET.get('production_year', '')
-    price = request.GET.get('price', '')
+    min_price = request.GET.get('min_price', '')
+    max_price = request.GET.get('max_price', '')
     if production_year:
         production_year2 = datetime.strptime(production_year, '%Y')
     else:
@@ -114,7 +115,10 @@ def filter_cars(request):
     query += f"generation_year2 => '{production_year2}' " if production_year2 else ""
     if query[-2:-1] == "'":
         query += f","
-    query += f"'{price}', " if price else ""
+    query += f"min_price2 => '{min_price}' " if min_price else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"max_price2 => '{max_price}' " if max_price else ""
     if query[-2:-1] == "'":
         query += f","
     query += f"min_mileage2 => '{min_mileage}' " if min_mileage else ""
