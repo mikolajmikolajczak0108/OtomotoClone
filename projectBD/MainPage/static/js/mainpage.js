@@ -21,6 +21,9 @@ $(document).ready(function() {
     var is_cruise_control = $("#is_cruise_control-checkbox").is(":checked");
     var is_usb_port = $("#is_usb_port-checkbox").is(":checked");
     var is_abs = $("#is_abs-checkbox").is(":checked");
+    var air_conditioning = $("#air_conditioning-select").val();
+    var roof_type = $("#roof_type-select").val();
+    var upholstery = $("#upholstery-select").val();
     console.log("hujostatni")
 $.ajax({
   type: "GET",
@@ -37,7 +40,10 @@ $.ajax({
     is_electric_seats: is_electric_seats,
     is_cruise_control: is_cruise_control,
     is_usb_port: is_usb_port,
-    is_abs: is_abs
+    is_abs: is_abs,
+    air_conditioning: air_conditioning,
+    roof_type: roof_type,
+    upholstery: upholstery
   },
   success: function(response) {
 

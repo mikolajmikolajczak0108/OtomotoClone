@@ -73,24 +73,74 @@ def filter_cars(request):
     is_cruise_control = request.GET.get('is_cruise_control', '')
     is_usb_port = request.GET.get('is_usb_port', '')
     is_abs = request.GET.get('is_abs', '')
+    air_conditioning = request.GET.get('air_conditioning', '')
+    roof_type = request.GET.get('roof_type', '')
+    upholstery = request.GET.get('upholstery', '')
+    air_types_id = ""
+    roof_type_id = ""
+    upholstery_id = ""
+    cars = '"'+'Cars'+'"'
+  #  breakpoint()
+    if air_conditioning:
+        with connection.cursor() as cursor:
+            cursor.execute(f"Select id from {cars}.air_conditioning_type where name = '{air_conditioning}'")
+            air_types_id = cursor.fetchall() #for getting id's to function instead of names that are returned from selects
+    if roof_type:
+        with connection.cursor() as cursor:
+            cursor.execute(f"Select id from {cars}.roof_type where name = '{roof_type}'")
+            roof_type_id = cursor.fetchall() #for getting id's to function instead of names that are returned from selects
+    if upholstery:
+        with connection.cursor() as cursor:
+            cursor.execute(f"Select id from {cars}.upholstery where name = '{upholstery}'")
+            upholstery_id = cursor.fetchall() #for getting id's to function instead of names that are returned from selects
+    query_len = 0
     query = 'SELECT * FROM "Cars".get_cars_by_filter('
-    query += f"brand_name2 => '{brand}', " if brand else ""
-    query += f"model_name2 => '{model}', " if model else ""
-    query += f"generation_year2 => '{production_year}', " if production_year else ""
+    query_len = len(query)
+    query += f"brand_name2 => '{brand}' " if brand else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"model_name2 => '{model}' " if model else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"generation_year2 => '{production_year}' " if production_year else ""
+    if query[-2:-1] == "'":
+        query += f","
     # query += f"'{price}', " if price else ""
     # query += f"'{mileage}', " if mileage else ""
-    query += f"is_garaged2 => '{is_garaged}', " if is_garaged else ""
-    query += f"is_damaged2 => '{is_damaged}', " if is_damaged else ""
-    query += f"is_after_accident2 => '{is_after_accident}', " if is_after_accident else ""
-    query += f"is_electric_seats2 => '{is_electric_seats}', " if is_electric_seats else ""
-    query += f"is_cruise_control2 => '{is_cruise_control}', " if is_cruise_control else ""
-    query += f"is_usb_port2 => '{is_usb_port}', " if is_usb_port else ""
-    query += f"is_abs2 => '{is_abs}'" if is_abs else ""
-    query += ")"
+    query += f"is_garaged2 => '{is_garaged}' " if is_garaged == "True" else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"is_damaged2 => '{is_damaged}' " if is_damaged == "True" else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"is_after_accident2 => '{is_after_accident}' " if is_after_accident == "True" else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"is_electric_seats2 => '{is_electric_seats}' " if is_electric_seats == "True" else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"is_cruise_control2 => '{is_cruise_control}' " if is_cruise_control == "True" else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"is_usb_port2 => '{is_usb_port}' " if is_usb_port == "True" else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"is_abs2 => '{is_abs}' " if is_abs == "True" else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"air_conditioning_type2 => '{air_types_id[0][0]}' " if air_types_id else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"roof_type_id2 => '{roof_type_id[0][0]}' " if roof_type_id else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"upholstery_id2 => '{upholstery_id[0][0]}'," if upholstery_id else ""
+    if not len(query) == query_len:
+        query = query[:-1]
+    query += f") LIMIT 100"
     with connection.cursor() as cursor:
         cursor.execute(query)
         filtered_offers = cursor.fetchall()
-    # breakpoint()
     return JsonResponse({'filtered_offers': filtered_offers},
                         safe=False)
 
