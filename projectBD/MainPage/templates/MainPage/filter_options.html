@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
+<div style=""class="container">
+    <div style="background-color: grey; display:block; width:1100px;border-radius:50px;" class="row">
+        <div style="float:left; margin-top:50px; margin-left:50px; width:150px; " class="col-md-4">
             <select class="form-control" id="brand-select">
                 <option value="">Brand</option>
 {% for brand in brands %}
@@ -12,7 +12,7 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="col-md-4">
+        <div  style="float:left; margin-left:5px;margin-top: 50px; width:150px;"class="col-md-4">
             <select class="form-control" id="model-select">
                 <option value="">Model</option>
 {% for model in models %}
@@ -21,7 +21,7 @@
 
             </select>
         </div>
-<div class="col-md-4">
+<div style="float:left; margin-left:5px; margin-top:50px; width:200px; "class="col-md-4">
     <select class="form-control" id="production-year-select">
         <option value="">Production Year</option>
         {% for year in production_years %}
@@ -30,8 +30,8 @@
     </select>
 </div>
     <div class="row">
-        <div class="col-md-4">
-            <select class="form-control" id="price-select">
+        <div style=" postition:absolute; z-index:40; float:left; margin-left:575px; margin-top:-38px; width:150px;" class="col-md-4">
+            <select style="width:150px; position:center;" class="form-control" id="price-select">
                 <option value="">Price</option>
 {% for price in prices %}
                 <option value="{{price}}">{{price.0}}</option>
@@ -41,7 +41,7 @@
         </div>
 
     </div>
-<div class="col-md-4">
+<div style=" postition:absolute; z-index:40; float:left; margin-left:750px; margin-top:-38px; width:150px;" class="col-md-4">
     <select class="form-control" id="mileage-select">
         <option value="" disabled selected>Mileage</option>
         <option value="10000">0-10000</option>
@@ -58,18 +58,18 @@
 </select>
 </div>
 <div class="col-md-4">
-  <div class="form-group">
+  <div style="position:absolute; z-index:15; margin-right: 10%;" class="form-group">
     <label for="is_garaged-checkbox">Is Garaged</label>
     <input type="checkbox" class="form-control" id="is_garaged-checkbox">
   </div>
 </div>
-<div class="col-md-4">
+<div style="margin-top:100px;"class="col-md-4">
   <div class="form-group">
     <label for="is_damaged-checkbox">Is Damaged</label>
     <input type="checkbox" class="form-control" id="is_damaged-checkbox">
   </div>
 </div>
-<div class="col-md-4">
+<div style="float:left;" class="col-md-4">
   <div class="form-group">
     <label for="is_after_accident-checkbox">Is AfterAccident</label>
     <input type="checkbox" class="form-control" id="is_after_accident-checkbox">
@@ -113,7 +113,7 @@
 </div>
 
 <div class="col-md-4">
-    <select class="form-control" id="air_conditioning-select">
+    <select style=" margin-top: 10px; position:relative; z-index:100; " class="form-control" id="air_conditioning-select">
         <option value="">Select Air conditioning type</option>
     {% for air in air_conditioning_types %}
         <option value="{{air.0}}">{{air.0}}</option>
@@ -121,7 +121,7 @@
 </select>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="roof_type-select">
+    <select style="margin-top: 10px; position:relative; z-index:100;" class="form-control" id="roof_type-select">
         <option value="">Select Roof Type</option>
     {% for roof in roof_types %}
         <option value="{{roof.0}}">{{roof.0}}</option>
@@ -129,7 +129,7 @@
 </select>
 </div>
 <div class="col-md-4">
-    <select class="form-control" id="upholstery-select">
+    <select style=" margin-top: 10px; position:relative; z-index:100; " class="form-control" id="upholstery-select">
         <option value="">Select Upholstery</option>
     {% for upholstery in upholsteries %}
         <option value="{{upholstery.0}}">{{upholstery.0}}</option>
@@ -137,7 +137,8 @@
 </select>
 </div>
 <div class="col-md-4">
-    <button class="btn btn-primary" id="filter-btn">Filter</button>
+    <button style="text-align: center; margin-top: 75px; margin-left:475px;position:relative; z-index:10; width:130px; height:70px;" class="btn btn-primary" id="filter-btn">Filter</button>
+</div>
 </div>
 </div>
 <script src="{% static 'js/filter_logic.js' %}"></script>
