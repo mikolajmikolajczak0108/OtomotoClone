@@ -12,8 +12,9 @@ $(document).ready(function() {
     var brand = $("#brand-select").val();
     var model = $("#model-select").val();
     var production_year = $("#production-year-select").val();
-    var price = $("#price-select").val();
-    var mileage = $("#mileage-select").val();
+    var min_price = $("#min_price-input").val();
+    var max_price = $("#max_price-input").val();
+    var mileage = $("#mileage-select").val()
     var is_garaged = $("#is_garaged-checkbox").is(":checked");
     var is_damaged = $("#is_damaged-checkbox").is(":checked");
     var is_after_accident = $("#is_after_accident-checkbox").is(":checked");
@@ -32,7 +33,8 @@ $.ajax({
     brand: brand,
     model: model,
     production_year: production_year,
-    price: price,
+    min_price: min_price,
+    max_price: max_price,
     mileage: mileage,
     is_garaged: is_garaged,
     is_damaged: is_damaged,

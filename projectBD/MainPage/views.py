@@ -64,12 +64,18 @@ def filter_cars(request):
     brand = request.GET.get('brand', '')
     model = request.GET.get('model', '')
     production_year = request.GET.get('production_year', '')
-    price = request.GET.get('price', '')
+    min_price = request.GET.get('min_price', '')
+    max_price = request.GET.get('max_price', '')
     if production_year:
         production_year2 = datetime.strptime(production_year, '%Y')
     else:
         production_year2 = ""
-    mileage = request.GET.get('mileage', '')
+    max_mileage = request.GET.get('mileage', '')
+
+    if max_mileage:
+        min_mileage = str(int(max_mileage) - 10000)
+    else:
+        min_mileage = ''
     is_garaged = request.GET.get('is_garaged', '')
     is_damaged = request.GET.get('is_damaged', '')
     is_after_accident = request.GET.get('is_after_accident', '')
@@ -97,7 +103,6 @@ def filter_cars(request):
         with connection.cursor() as cursor:
             cursor.execute(f"Select id from {cars}.upholstery where name = '{upholstery}'")
             upholstery_id = cursor.fetchall() #for getting id's to function instead of names that are returned from selects
-    query_len = 0
     query = 'SELECT * FROM "Cars".get_cars_by_filter('
     query_len = len(query)
     query += f"brand_name2 => '{brand}' " if brand else ""
@@ -109,12 +114,18 @@ def filter_cars(request):
     query += f"generation_year2 => '{production_year2}' " if production_year2 else ""
     if query[-2:-1] == "'":
         query += f","
-    query += f"'{price}', " if price else ""
+    query += f"min_price2 => '{min_price}' " if min_price else ""
     if query[-2:-1] == "'":
         query += f","
-    # query += f"'{mileage}', " if mileage else ""
-    # if query[-2:-1] == "'":
-    #     query += f","
+    query += f"max_price2 => '{max_price}' " if max_price else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"min_mileage2 => '{min_mileage}' " if min_mileage else ""
+    if query[-2:-1] == "'":
+        query += f","
+    query += f"max_mileage2 => '{max_mileage}' " if max_mileage else ""
+    if query[-2:-1] == "'":
+        query += f","
     query += f"is_garaged2 => '{is_garaged}' " if is_garaged == "True" else ""
     if query[-2:-1] == "'":
         query += f","

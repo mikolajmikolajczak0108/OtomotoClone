@@ -30,20 +30,22 @@
     </select>
 </div>
     <div class="row">
-        <div style=" postition:absolute; z-index:40; float:left; margin-left:575px; margin-top:-38px; width:150px;" class="col-md-4">
-            <select style="width:150px; position:center;" class="form-control" id="price-select">
-                <option value="">Price</option>
-{% for price in prices %}
-                <option value="{{price}}">{{price.0}}</option>
-                {% endfor %}
+        <div style=" postition:absolute; z-index:40; float:left; margin-left:575px; margin-top:0px; width:150px;" class="col-md-4">
+<label for="price-input">Minimal Price</label>
+<input type="text" id="min_price-input" name="price-input" />
+        </div>
 
-            </select>
+    </div>
+    <div class="row">
+        <div style=" postition:absolute; z-index:40; float:left; margin-left:575px; margin-top:0px; width:150px;" class="col-md-4">
+<label for="price-input">Maximal Price</label>
+<input type="text" id="max_price-input" name="price-input" />
         </div>
 
     </div>
 <div style=" postition:absolute; z-index:40; float:left; margin-left:750px; margin-top:-38px; width:150px;" class="col-md-4">
     <select class="form-control" id="mileage-select">
-        <option value="" disabled selected>Mileage</option>
+        <option value="">Mileage</option>
         <option value="10000">0-10000</option>
         <option value="20000">10000-20000</option>
         <option value="30000">20000-30000</option>
