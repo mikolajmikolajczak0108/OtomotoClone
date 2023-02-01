@@ -25,7 +25,6 @@ $(document).ready(function() {
     var air_conditioning = $("#air_conditioning-select").val();
     var roof_type = $("#roof_type-select").val();
     var upholstery = $("#upholstery-select").val();
-    console.log("hujostatni")
 $.ajax({
   type: "GET",
   url: "/filter",
@@ -53,11 +52,9 @@ $.ajax({
          window.location.href = "/filtered_offers?offers=" + encodeURIComponent(JSON.stringify(response));
          console.log("AJAX success");
 console.log("Response: " + response);
-    console.log("Huj zmieniaj strone")
   },
   error: function(error) {
     console.log(error)
-        console.log("huj blad")
   },
 
 });
